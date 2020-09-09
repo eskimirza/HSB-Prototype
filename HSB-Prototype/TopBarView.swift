@@ -32,7 +32,7 @@ struct TopBarView: View {
                 }
                 
                 Button(action: {}) {
-                    Image("icon_settings")
+                    Image("icon_selection")
                         .foregroundColor(Color("buttonForeground"))
                         .frame(width: 32, height: 32)
                         .background(Color("buttonBackground"))
@@ -52,13 +52,13 @@ struct TopBarView: View {
             
             HStack(spacing: 24) {
                 Button(action: {}) {
-                    Image("icon_erase")
+                    Image("icon_brush")
                         .renderingMode(.original)
                         .frame(width: 32, height: 32)
                 }
                 
                 Button(action: {}) {
-                    Image("icon_layers")
+                    Image("icon_smudge")
                         .renderingMode(.original)
                         .frame(width: 32, height: 32)
                 }
@@ -77,7 +77,7 @@ struct TopBarView: View {
                 
                 Circle()
                     .frame(width: 28, height: 28)
-                    .foregroundColor(.pink)
+                    .foregroundColor(Color("lightPink"))
             }
         }
         .padding(.leading, 24)

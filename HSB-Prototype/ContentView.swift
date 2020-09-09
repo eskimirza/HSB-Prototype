@@ -96,7 +96,7 @@ struct ContentView: View {
                     Spacer()
                     
                     VStack(spacing: -20) {
-                        SliderView(xOffset: $hueSliderOffset, sliderModifier: $hueModifier, isHue: true, isEdited: $isHueEdited, colors: [.red, .purple, .blue, .green, .yellow, .orange, .red], sliderTitle: "Hue")
+                        SliderView(xOffset: $hueSliderOffset, sliderModifier: $hueModifier, isHue: true, isEdited: $isHueEdited, colors: [.red, Color(UIColor.magenta), .blue, Color(UIColor.systemTeal), .green, .yellow, .orange, .red], sliderTitle: "Hue")
                         
                         SliderView(xOffset: $saturationSliderOffset, sliderModifier: $saturationModifier, isSaturation: true, isEdited: $isSaturationEdited, colors: [.gray, .red], sliderTitle: "Saturation")
                         

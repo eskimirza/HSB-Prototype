@@ -55,14 +55,14 @@ struct SliderView: View {
                                     self.xOffset = value.location.x
 
                                     if self.isHue {
-                                        self.sliderModifier = (value.location.x + (self.trackWidth/2)) / (self.trackWidth) * 360
+                                        self.sliderModifier = ((value.location.x + (self.trackWidth/2)) / (self.trackWidth) - 0.5) * 360
                                     } else if self.isSaturation {
                                         self.sliderModifier = (value.location.x + (self.trackWidth/2)) / (self.trackWidth) * 5
                                     } else if self.isBrightness {
                                         self.sliderModifier = (value.location.x + (self.trackWidth/2)) / (self.trackWidth) - 0.5
                                     }
                                     
-                                    print(self.sliderModifier)
+                                    print(value.location.x, self.sliderModifier, (value.location.x + (self.trackWidth/2)) / (self.trackWidth))
                                 }
                                 self.isDragged = true
                             }
