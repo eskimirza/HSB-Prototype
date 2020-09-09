@@ -7,15 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		361A8D1725088E460018D143 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361A8D1625088E460018D143 /* SliderView.swift */; };
+		361A8D192508CE190018D143 /* TopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361A8D182508CE190018D143 /* TopBarView.swift */; };
 		3634739F250656B800350973 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3634739E250656B800350973 /* AppDelegate.swift */; };
 		363473A1250656B800350973 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363473A0250656B800350973 /* SceneDelegate.swift */; };
 		363473A3250656B800350973 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363473A2250656B800350973 /* ContentView.swift */; };
 		363473A5250656BB00350973 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 363473A4250656BB00350973 /* Assets.xcassets */; };
 		363473A8250656BB00350973 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 363473A7250656BB00350973 /* Preview Assets.xcassets */; };
 		363473AB250656BB00350973 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 363473A9250656BB00350973 /* LaunchScreen.storyboard */; };
+		363473B325065B4500350973 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363473B225065B4500350973 /* BlurView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		361A8D1625088E460018D143 /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
+		361A8D182508CE190018D143 /* TopBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBarView.swift; sourceTree = "<group>"; };
 		3634739B250656B800350973 /* HSB-Prototype.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HSB-Prototype.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3634739E250656B800350973 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		363473A0250656B800350973 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +29,7 @@
 		363473A7250656BB00350973 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		363473AA250656BB00350973 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		363473AC250656BB00350973 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		363473B225065B4500350973 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +65,9 @@
 				3634739E250656B800350973 /* AppDelegate.swift */,
 				363473A0250656B800350973 /* SceneDelegate.swift */,
 				363473A2250656B800350973 /* ContentView.swift */,
+				361A8D182508CE190018D143 /* TopBarView.swift */,
+				361A8D1625088E460018D143 /* SliderView.swift */,
+				363473B225065B4500350973 /* BlurView.swift */,
 				363473A4250656BB00350973 /* Assets.xcassets */,
 				363473A9250656BB00350973 /* LaunchScreen.storyboard */,
 				363473AC250656BB00350973 /* Info.plist */,
@@ -147,8 +156,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				3634739F250656B800350973 /* AppDelegate.swift in Sources */,
+				363473B325065B4500350973 /* BlurView.swift in Sources */,
 				363473A1250656B800350973 /* SceneDelegate.swift in Sources */,
 				363473A3250656B800350973 /* ContentView.swift in Sources */,
+				361A8D192508CE190018D143 /* TopBarView.swift in Sources */,
+				361A8D1725088E460018D143 /* SliderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,7 +308,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.eskimirza.HSB-Prototype";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -316,7 +328,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.eskimirza.HSB-Prototype";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
