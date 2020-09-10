@@ -33,7 +33,7 @@ struct SliderView: View {
                         .shadow(color: Color.black.opacity(0.3), radius: 4, x: 0, y: 4)
                         .frame(width: self.isDragged ? 24 : 16, height: self.isDragged ? 24 : 16)
                         .offset(x: self.xOffset)
-                        .animation(.spring(response: 0.2, dampingFraction: 0.8, blendDuration: 0))
+                        .animation(.spring(response: 0.1, dampingFraction: 0.8, blendDuration: 0))
                     
                     LinearGradient(gradient: Gradient(colors: self.colors), startPoint: .leading, endPoint: .trailing)
                         .mask(
@@ -41,7 +41,7 @@ struct SliderView: View {
                                 .frame(width: self.isDragged ? 24 : 16, height: self.isDragged ? 24 : 16)
                                 .scaledToFit()
                                 .offset(x: self.xOffset)
-                                .animation(.spring(response: 0.2, dampingFraction: 0.8, blendDuration: 0))
+                                .animation(.spring(response: 0.1, dampingFraction: 0.8, blendDuration: 0))
                         )
                         .frame(height: 24)
                     
@@ -49,7 +49,7 @@ struct SliderView: View {
                         .foregroundColor(Color.black.opacity(0.1))
                         .frame(width: self.isDragged ? 24 : 16, height: self.isDragged ? 24 : 16)
                         .offset(x: self.xOffset)
-                        .animation(.spring(response: 0.2, dampingFraction: 0.8, blendDuration: 0))
+                        .animation(.spring(response: 0.1, dampingFraction: 0.8, blendDuration: 0))
                         
                 }
                 .frame(maxWidth: .infinity)
