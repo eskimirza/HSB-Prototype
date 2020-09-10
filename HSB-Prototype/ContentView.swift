@@ -29,6 +29,7 @@ struct ContentView: View {
                 .hueRotation(Angle(degrees: Double(hueModifier)))
                 .saturation(Double(saturationModifier))
                 .brightness(Double(brightnessModifier))
+                .animation(.linear(duration: 0.2))
     
             VStack(spacing:0) {
                 TopBarView()
