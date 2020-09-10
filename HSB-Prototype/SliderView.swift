@@ -32,7 +32,7 @@ struct SliderView: View {
                         .shadow(color: Color.black.opacity(0.3), radius: 4, x: 0, y: 4)
                         .frame(width: self.isDragged ? 24 : 16, height: self.isDragged ? 24 : 16)
                         .offset(x: self.xOffset)
-                        .animation(.spring(response: 0.2, dampingFraction: 0.6, blendDuration: 0))
+                        .animation(.spring(response: 0.2, dampingFraction: 0.8, blendDuration: 0))
                     
                     LinearGradient(gradient: Gradient(colors: self.colors), startPoint: .leading, endPoint: .trailing)
                         .mask(
@@ -40,7 +40,7 @@ struct SliderView: View {
                                 .frame(width: self.isDragged ? 24 : 16, height: self.isDragged ? 24 : 16)
                                 .scaledToFit()
                                 .offset(x: self.xOffset)
-                                .animation(.spring(response: 0.2, dampingFraction: 0.6, blendDuration: 0))
+                                .animation(.spring(response: 0.2, dampingFraction: 0.8, blendDuration: 0))
                         )
                         .frame(width: self.trackWidth + 100 , height: 24)
                     
@@ -48,7 +48,7 @@ struct SliderView: View {
                         .foregroundColor(Color.black.opacity(0.1))
                         .frame(width: self.isDragged ? 24 : 16, height: self.isDragged ? 24 : 16)
                         .offset(x: self.xOffset)
-                        .animation(.spring(response: 0.2, dampingFraction: 0.6, blendDuration: 0))
+                        .animation(.spring(response: 0.2, dampingFraction: 0.8, blendDuration: 0))
                         .gesture(
                             DragGesture().onChanged { value in
                                 if value.location.x <= self.trackWidth/2 && value.location.x >= -(self.trackWidth/2){
@@ -62,7 +62,7 @@ struct SliderView: View {
                                         self.sliderModifier = (value.location.x + (self.trackWidth/2)) / (self.trackWidth) - 0.5
                                     }
                                     
-                                    print(value.location.x, self.sliderModifier, (value.location.x + (self.trackWidth/2)) / (self.trackWidth))
+                                    //print(value.location.x, self.sliderModifier, (value.location.x + (self.trackWidth/2)) / (self.trackWidth))
                                 }
                                 self.isDragged = true
                             }
@@ -78,6 +78,15 @@ struct SliderView: View {
                         )
                 }
                 .frame(width: self.trackWidth)
+                .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .global).onEnded { value in
+                    let tappedXLocation = value.location.x - 425 - (self.trackWidth/2)
+                    
+                    if tappedXLocation <= self.trackWidth/2 && tappedXLocation >= -(self.trackWidth/2){
+                        self.xOffset = tappedXLocation
+                        
+                        print(tappedXLocation)
+                    }
+                })
                 
                 Text(self.sliderTitle)
                     .foregroundColor(.gray)
