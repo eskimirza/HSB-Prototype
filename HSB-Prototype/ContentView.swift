@@ -21,7 +21,7 @@ struct ContentView: View {
     
     var body: some View {
         
-        ZStack(alignment: .center) {
+        ZStack(alignment: .topLeading) {
             Image("Neon-Source")
                 .resizable()
                 .aspectRatio(contentMode: .fill)
@@ -93,7 +93,7 @@ struct ContentView: View {
                         
                         SliderView(xOffset: $brightnessSliderOffset, sliderModifier: $brightnessModifier, isBrightness: true, isEdited: $isBrightnessEdited, colors: [.black, .white], sliderTitle: "Brightness")
                     }
-                    .padding(.horizontal, 150)
+                    .padding(.horizontal, screen.height > 414 && screen.width > 836 ? 150 : 40)
                 }
                 .frame(maxWidth: .infinity)
                 .frame(height: 186)
@@ -101,6 +101,7 @@ struct ContentView: View {
                 //.padding(.bottom, 24)
                 .background(BlurView(style: .dark))
             }
+            .frame(height: screen.height)
         }
         .statusBar(hidden: true)
         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
@@ -120,6 +121,7 @@ let screen = UIScreen.main.bounds
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            //.previewLayout(.fixed(width: 1366, height: 1024))
+            //.previewLayout(.fixed(width: 812, height: 375))
+            .previewLayout(.fixed(width: 1366, height: 1024))
     }
 }

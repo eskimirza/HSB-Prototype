@@ -81,8 +81,7 @@ struct TopBarView: View {
                         .foregroundColor(Color("lightPink"))
                 }
             }
-                .padding(.leading, 24)
-                .padding(.trailing, 8)
+                .padding(.horizontal, 24)
                 .frame(height: 44)
                 .background(BlurView(style: .systemMaterialDark))
             
