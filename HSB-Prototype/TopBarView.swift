@@ -10,80 +10,89 @@ import SwiftUI
 
 struct TopBarView: View {
     var body: some View {
-        HStack {
-            HStack(spacing: 24) {
-                Text("Gallery")
-                    .foregroundColor(.gray)
-                
-                Button(action: {}) {
-                    Image("icon_settings")
-                        .foregroundColor(Color("buttonForeground"))
-                        .frame(width: 32, height: 32)
-                        .background(Color("buttonBackground"))
-                        .clipShape(Circle())
+        VStack(spacing: 0) {
+            HStack {
+                HStack(spacing: 24) {
+                    Text("Gallery")
+                        .foregroundColor(.gray)
+                    
+                    Button(action: {}) {
+                        Image("icon_settings")
+                            .foregroundColor(Color("buttonForeground"))
+                            .frame(width: 32, height: 32)
+                            .background(Color("buttonBackground"))
+                            .clipShape(Circle())
+                    }
+                    
+                    Button(action: {}) {
+                        Image("icon_magic_wand")
+                            .foregroundColor(Color("buttonForeground"))
+                            .frame(width: 32, height: 32)
+                            .background(Color("buttonBackground"))
+                            .clipShape(Circle())
+                    }
+                    
+                    Button(action: {}) {
+                        Image("icon_selection")
+                            .foregroundColor(Color("buttonForeground"))
+                            .frame(width: 32, height: 32)
+                            .background(Color("buttonBackground"))
+                            .clipShape(Circle())
+                    }
+                    
+                    Button(action: {}) {
+                        Image("icon_arrow")
+                            .foregroundColor(Color("buttonForeground"))
+                            .frame(width: 32, height: 32)
+                            .background(Color("buttonBackground"))
+                            .clipShape(Circle())
+                    }
                 }
                 
-                Button(action: {}) {
-                    Image("icon_magic_wand")
-                        .foregroundColor(Color("buttonForeground"))
-                        .frame(width: 32, height: 32)
-                        .background(Color("buttonBackground"))
-                        .clipShape(Circle())
-                }
+                Spacer()
                 
-                Button(action: {}) {
-                    Image("icon_selection")
-                        .foregroundColor(Color("buttonForeground"))
-                        .frame(width: 32, height: 32)
-                        .background(Color("buttonBackground"))
-                        .clipShape(Circle())
-                }
-                
-                Button(action: {}) {
-                    Image("icon_arrow")
-                        .foregroundColor(Color("buttonForeground"))
-                        .frame(width: 32, height: 32)
-                        .background(Color("buttonBackground"))
-                        .clipShape(Circle())
+                HStack(spacing: 24) {
+                    Button(action: {}) {
+                        Image("icon_brush")
+                            .renderingMode(.original)
+                            .frame(width: 32, height: 32)
+                    }
+                    
+                    Button(action: {}) {
+                        Image("icon_smudge")
+                            .renderingMode(.original)
+                            .frame(width: 32, height: 32)
+                    }
+                    
+                    Button(action: {}) {
+                        Image("icon_erase")
+                            .renderingMode(.original)
+                            .frame(width: 32, height: 32)
+                    }
+                    
+                    Button(action: {}) {
+                        Image("icon_layers")
+                            .renderingMode(.original)
+                            .frame(width: 32, height: 32)
+                    }
+                    
+                    Circle()
+                        .frame(width: 28, height: 28)
+                        .foregroundColor(Color("lightPink"))
                 }
             }
+                .padding(.leading, 24)
+                .padding(.trailing, 8)
+                .frame(height: 44)
+                .background(BlurView(style: .systemMaterialDark))
             
-            Spacer()
-            
-            HStack(spacing: 24) {
-                Button(action: {}) {
-                    Image("icon_brush")
-                        .renderingMode(.original)
-                        .frame(width: 32, height: 32)
-                }
-                
-                Button(action: {}) {
-                    Image("icon_smudge")
-                        .renderingMode(.original)
-                        .frame(width: 32, height: 32)
-                }
-                
-                Button(action: {}) {
-                    Image("icon_erase")
-                        .renderingMode(.original)
-                        .frame(width: 32, height: 32)
-                }
-                
-                Button(action: {}) {
-                    Image("icon_layers")
-                        .renderingMode(.original)
-                        .frame(width: 32, height: 32)
-                }
-                
-                Circle()
-                    .frame(width: 28, height: 28)
-                    .foregroundColor(Color("lightPink"))
-            }
+            Text("Hue, Saturation, Brightness")
+                .frame(maxWidth:.infinity)
+                .padding(.vertical, 5)
+                .foregroundColor(.gray)
+                .background(BlurView(style: .systemThinMaterialDark))
         }
-        .padding(.leading, 24)
-        .padding(.trailing, 8)
-        .frame(width: screen.width, height: 44)
-        .background(BlurView(style: .systemMaterialDark))
+        
     }
 }
 

@@ -21,26 +21,17 @@ struct ContentView: View {
     
     var body: some View {
         
-        ZStack(alignment: .top) {
+        ZStack(alignment: .center) {
             Image("Neon-Source")
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-                .edgesIgnoringSafeArea(.top)
+                //.edgesIgnoringSafeArea(.top)
                 .hueRotation(Angle(degrees: Double(hueModifier)))
                 .saturation(Double(saturationModifier))
                 .brightness(Double(brightnessModifier))
     
             VStack(spacing:0) {
                 TopBarView()
-                    .offset(x: 0, y: -2)
-                
-                Text("Hue, Saturation, Brightness")
-                    .frame(width: screen.width)
-                    .padding(.vertical, 5)
-                    .foregroundColor(.gray)
-                    .background(BlurView(style: .systemThinMaterialDark))
-                    .offset(x: 0, y: -2)
-                    
                 
                 Spacer()
                 
@@ -95,26 +86,26 @@ struct ContentView: View {
                     
                     Spacer()
                     
-                    VStack(spacing: -20) {
+                    VStack(spacing: -24) {
                         SliderView(xOffset: $hueSliderOffset, sliderModifier: $hueModifier, isHue: true, isEdited: $isHueEdited, colors: [.red, Color(UIColor.magenta), .blue, Color(UIColor.systemTeal), .green, .yellow, .orange, .red], sliderTitle: "Hue")
                         
-                        SliderView(xOffset: $saturationSliderOffset, sliderModifier: $saturationModifier, isSaturation: true, isEdited: $isSaturationEdited, colors: [.gray, .red], sliderTitle: "Saturation")
+                        SliderView(xOffset: $saturationSliderOffset, sliderModifier: $saturationModifier, isSaturation: true, isEdited: $isSaturationEdited, colors: [.gray, .red, .red], sliderTitle: "Saturation")
                         
                         SliderView(xOffset: $brightnessSliderOffset, sliderModifier: $brightnessModifier, isBrightness: true, isEdited: $isBrightnessEdited, colors: [.black, .white], sliderTitle: "Brightness")
                     }
-
-
-                    
-                    Spacer()
+                    .padding(.horizontal, 150)
                 }
+                .frame(maxWidth: .infinity)
+                .frame(height: 186)
                 .padding(.horizontal, 5)
-                .padding(.bottom, 24)
-                .padding(.top, 16)
-                .frame(maxWidth: screen.width, maxHeight: 186)
+                //.padding(.bottom, 24)
                 .background(BlurView(style: .dark))
             }
         }
         .statusBar(hidden: true)
+        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
+        .edgesIgnoringSafeArea(.all)
+        
     }
 }
 

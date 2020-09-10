@@ -18,14 +18,15 @@ struct SliderView: View {
     @Binding var isEdited: Bool
     var colors = [Color]()
     var sliderTitle = "Slider"
-    var trackWidth: CGFloat = 538
+    @State var trackWidth: CGFloat = 0
     
     var body: some View {
         GeometryReader { geometry in
-            HStack {
+            HStack(spacing:0) {
                 ZStack {
                     LinearGradient(gradient: Gradient(colors: self.colors), startPoint: .leading, endPoint: .trailing)
-                    .frame(width: self.trackWidth, height: 3)
+                    .frame(height: 3)
+                    .padding(.horizontal, 16)
                     
                     Circle()
                         .foregroundColor(Color.black)
@@ -42,56 +43,59 @@ struct SliderView: View {
                                 .offset(x: self.xOffset)
                                 .animation(.spring(response: 0.2, dampingFraction: 0.8, blendDuration: 0))
                         )
-                        .frame(width: self.trackWidth + 100 , height: 24)
+                        .frame(height: 24)
                     
                     Circle()
                         .foregroundColor(Color.black.opacity(0.1))
                         .frame(width: self.isDragged ? 24 : 16, height: self.isDragged ? 24 : 16)
                         .offset(x: self.xOffset)
                         .animation(.spring(response: 0.2, dampingFraction: 0.8, blendDuration: 0))
-                        .gesture(
-                            DragGesture().onChanged { value in
-                                if value.location.x <= self.trackWidth/2 && value.location.x >= -(self.trackWidth/2){
-                                    self.xOffset = value.location.x
-
-                                    if self.isHue {
-                                        self.sliderModifier = ((value.location.x + (self.trackWidth/2)) / (self.trackWidth) - 0.5) * 360
-                                    } else if self.isSaturation {
-                                        self.sliderModifier = (value.location.x + (self.trackWidth/2)) / (self.trackWidth) * 5
-                                    } else if self.isBrightness {
-                                        self.sliderModifier = (value.location.x + (self.trackWidth/2)) / (self.trackWidth) - 0.5
-                                    }
-                                    
-                                    //print(value.location.x, self.sliderModifier, (value.location.x + (self.trackWidth/2)) / (self.trackWidth))
-                                }
-                                self.isDragged = true
-                            }
-                            .onEnded{ value in
-                                self.isDragged = false
-                                
-                                if self.xOffset != 0 {
-                                    self.isEdited = true
-                                } else {
-                                    self.isEdited = false
-                                }
-                            }
-                        )
-                }
-                .frame(width: self.trackWidth)
-                .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .global).onEnded { value in
-                    let tappedXLocation = value.location.x - 425 - (self.trackWidth/2)
-                    
-                    if tappedXLocation <= self.trackWidth/2 && tappedXLocation >= -(self.trackWidth/2){
-                        self.xOffset = tappedXLocation
                         
-                        print(tappedXLocation)
+                }
+                .frame(maxWidth: .infinity)
+                .onAppear {
+                    self.trackWidth = geometry.size.width - 100 - 32 // track - text - padding
+                }
+                .gesture(
+                    DragGesture(minimumDistance: 0, coordinateSpace: .local).onChanged { value in
+                        self.sliderOffset(value)
+                        self.isDragged = true
                     }
-                })
-                
+                    .onEnded{ value in
+                        self.sliderOffset(value)
+                        self.isDragged = false
+                        
+                        if self.xOffset != 0 {
+                            self.isEdited = true
+                        } else {
+                            self.isEdited = false
+                        }
+                        
+                        if value.location.x < 16 {
+                            self.xOffset = -(self.trackWidth/2)
+                        } else if value.location.x > self.trackWidth + 16 {
+                            self.xOffset = self.trackWidth/2
+                        }
+                        
+                    }
+                )
+
                 Text(self.sliderTitle)
                     .foregroundColor(.gray)
                     .frame(width: 100, alignment: .leading)
-                    .padding(.leading, 10)
+            }
+        }
+    }
+    
+    fileprivate func sliderOffset(_ value: DragGesture.Value) {
+        if value.location.x >= 16 && value.location.x <= self.trackWidth+16{
+            self.xOffset = value.location.x - (self.trackWidth/2) - 16
+            if self.isHue {
+                self.sliderModifier = ((value.location.x + (self.trackWidth/2)) / (self.trackWidth) - 0.5) * 360
+            } else if self.isSaturation {
+                self.sliderModifier = (value.location.x + (self.trackWidth/2)) / (self.trackWidth) * 5
+            } else if self.isBrightness {
+                self.sliderModifier = (value.location.x + (self.trackWidth/2)) / (self.trackWidth) - 0.5
             }
         }
     }
