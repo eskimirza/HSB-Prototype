@@ -91,11 +91,11 @@ struct SliderView: View {
         if value.location.x >= 16 && value.location.x <= self.trackWidth+16{
             self.xOffset = value.location.x - (self.trackWidth/2) - 16
             if self.isHue {
-                self.sliderModifier = ((value.location.x + (self.trackWidth/2)) / (self.trackWidth) - 0.5) * 360
+                self.sliderModifier = ((value.location.x) / (self.trackWidth) - 0.5) * 360
             } else if self.isSaturation {
-                self.sliderModifier = (value.location.x + (self.trackWidth/2)) / (self.trackWidth) * 5
+                self.sliderModifier = (value.location.x) / (self.trackWidth) * 5
             } else if self.isBrightness {
-                self.sliderModifier = (value.location.x + (self.trackWidth/2)) / (self.trackWidth) - 0.5
+                self.sliderModifier = (value.location.x) / (self.trackWidth) - 0.5
             }
         }
     }
